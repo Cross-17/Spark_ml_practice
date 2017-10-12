@@ -92,10 +92,8 @@ object Titanic {
       .setEvaluator(evaluator)
       .setEstimatorParamMaps(paramGrid)
       .setNumFolds(10)
-
     // train the model
     val crossValidatorModel = cv.fit(dataDFFiltered)
-
     // make predictions
     val predictions = crossValidatorModel.transform(predictDFFiltered)
 
@@ -105,6 +103,7 @@ object Titanic {
       .coalesce(1)
       .write
       .format("csv")
+      .mode("overwrite")
       .option("header", "true")
       .save("result")
   }
@@ -234,4 +233,5 @@ object Titanic {
 
     (trainDF, testDF)
   }
+
 }

@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70690790-1dde-4ccc-876f-7c3705a7efb7" name="Default" comment="" />
+    <list default="true" id="70690790-1dde-4ccc-876f-7c3705a7efb7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../untitled4/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../untitled4/heheda.csv/._SUCCESS.crc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../untitled4/heheda.csv/.part-00000-1a8bd65d-b95d-42c7-b2e9-5083c3f5a9f7.csv.crc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../untitled4/heheda.csv/part-00000-1a8bd65d-b95d-42c7-b2e9-5083c3f5a9f7.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../untitled4/result/.part-00000-a95b6148-8b67-4b32-9ef3-d31f7c77d0b7.csv.crc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../untitled4/result/part-00000-a95b6148-8b67-4b32-9ef3-d31f7c77d0b7.csv" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$anonfun$1.class" afterPath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$anonfun$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$anonfun$4.class" afterPath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$anonfun$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$anonfun$5.class" afterPath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$anonfun$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$anonfun$6.class" afterPath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$anonfun$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$typecreator1$1.class" afterPath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$typecreator1$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$typecreator2$1.class" afterPath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$typecreator2$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$typecreator3$1.class" afterPath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$typecreator3$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$typecreator4$1.class" afterPath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$typecreator4$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$typecreator5$1.class" afterPath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$$typecreator5$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$.class" afterPath="$PROJECT_DIR$/../untitled4/target/scala-2.11/classes/Titanic$.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../untitled4/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../untitled4/src/main/scala/titanic.scala" afterPath="$PROJECT_DIR$/../untitled4/src/main/scala/titanic.scala" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../untitled4/heheda.csv/_SUCCESS" afterPath="$PROJECT_DIR$/../untitled4/src/main/scala/test.sc" />
+    </list>
     <ignored path="$PROJECT_DIR$/../untitled4/out/" />
     <ignored path="$PROJECT_DIR$/../untitled4/target/" />
     <ignored path="$PROJECT_DIR$/../untitled4/project/project/target/" />
@@ -30,16 +50,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="titanic.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="titanic.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../untitled4/src/main/scala/titanic.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="39" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#3809#4910#0" expanded="false" />
-                <element signature="e#4914#6490#0" expanded="false" />
+                <element signature="e#3832#4933#0" expanded="false" />
+                <element signature="e#4937#6513#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.sc" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../untitled4/src/main/scala/test.sc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -50,7 +80,12 @@
     <findStrings>
       <find>args</find>
       <find>permission</find>
+      <find>udf</find>
+      <find>featcoln</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../untitled4" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -60,8 +95,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../untitled4/src/main/scala/titanic.scala" />
         <option value="$PROJECT_DIR$/../untitled4/src/main/scala/test.scala" />
+        <option value="$PROJECT_DIR$/../untitled4/src/main/scala/titanic.scala" />
+        <option value="$PROJECT_DIR$/../untitled4/src/main/scala/test.sc" />
       </list>
     </option>
   </component>
@@ -71,7 +107,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="1920" />
     <option name="height" value="1080" />
   </component>
@@ -90,12 +126,20 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="untitled4" type="b2602c69:ProjectViewProjectNode" />
               <item name="untitled4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled4" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="untitled4" type="b2602c69:ProjectViewProjectNode" />
@@ -119,10 +163,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -309,14 +350,16 @@
       <workItem from="1507700278077" duration="7509000" />
       <workItem from="1507708065795" duration="1775000" />
       <workItem from="1507709874618" duration="3009000" />
+      <workItem from="1507715561667" duration="7973000" />
+      <workItem from="1507827201875" duration="1361000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12293000" />
+    <option name="totallyTimeSpent" value="21627000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -336,10 +379,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2550586" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2603834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="sbt-shell-toolwindow" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -365,6 +408,46 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../untitled4/src/main/scala/test.scala">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled4/src/main/scala/titanic.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="68" column="34" lean-forward="true" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#3832#4933#0" expanded="false" />
+            <element signature="e#4937#6513#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled4/src/main/scala/test.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled4/src/main/scala/titanic.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#3832#4933#0" expanded="false" />
+            <element signature="e#4937#6513#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled4/src/main/scala/test.scala">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
           <folding />
@@ -377,8 +460,8 @@
           <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#3809#4910#0" expanded="false" />
-            <element signature="e#4914#6490#0" expanded="false" />
+            <element signature="e#3832#4933#0" expanded="false" />
+            <element signature="e#4937#6513#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -397,8 +480,8 @@
           <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#3809#4910#0" expanded="false" />
-            <element signature="e#4914#6490#0" expanded="false" />
+            <element signature="e#3832#4933#0" expanded="false" />
+            <element signature="e#4937#6513#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -434,13 +517,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../untitled4/src/main/scala/titanic.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="39" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#3809#4910#0" expanded="false" />
-            <element signature="e#4914#6490#0" expanded="false" />
+            <element signature="e#3832#4933#0" expanded="false" />
+            <element signature="e#4937#6513#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled4/src/main/scala/test.sc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
