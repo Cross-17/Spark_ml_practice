@@ -9,7 +9,7 @@ import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions._
 import org.apache.spark.ml.feature.VectorIndexer
 
-object Test {
+object House {
 
   def main(args: Array[String]): Unit = {
     Logger.getLogger("org").setLevel(Level.ERROR)
@@ -21,36 +21,32 @@ object Test {
       .getOrCreate()
     import spark.implicits._
 
-
     val (train, test) = loadData("D://Do/train.csv", "D://Do/test.csv", spark)
 
     val featureIndexer = new VectorAssembler()
       .setInputCols(test.schema.fieldNames)
       .setOutputCol("Feature")
-    train.printSchema()
-    val numericFeatColNames = Seq("Age", "SibSp", "Parch", "Fare", "FamilySize")
-    train.columns.foreach(x => println(x))
 
 
-//    val rf = new RandomForestRegressor()
-//      .setLabelCol("SalePrice")
-//      .setFeaturesCol("indexedFeatures")
-//
-//    val pipeline = new Pipeline()
-//      .setStages(Array(featureIndexer, rf))
-//
-//    val model = pipeline.fit(train)
-//
-//    val predictions = model.transform(test)
-//
-//    predictions
-//      .select("Id", "SalePrice")
-//      .coalesce(1)
-//      .write
-//      .format("csv")
-//      .mode("overwrite")
-//      .option("header", "true")
-//      .save("result")
+    val rf = new RandomForestRegressor()
+      .setLabelCol("SalePrice")
+      .setFeaturesCol("Feature")
+
+    val pipeline = new Pipeline()
+      .setStages(Array(featureIndexer, rf))
+
+    val model = pipeline.fit(train)
+
+    val predictions = model.transform(test)
+
+    predictions
+      .select("Id", "SalePrice")
+      .coalesce(1)
+      .write
+      .format("csv")
+      .mode("overwrite")
+      .option("header", "true")
+      .save("result")
   }
 
   def fillNAValues(trainDF: DataFrame, testDF: DataFrame): (DataFrame, DataFrame) = {

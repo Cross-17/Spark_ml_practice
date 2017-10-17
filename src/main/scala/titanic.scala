@@ -1,6 +1,6 @@
 import org.apache.log4j.{Logger, Level}
 import org.apache.spark.ml.Pipeline
-import org.apache.spark.ml.classification.RandomForestClassifier
+import org.apache.spark.ml.classification._
 import org.apache.spark.ml.evaluation.BinaryClassificationEvaluator
 import org.apache.spark.ml.feature.{IndexToString, VectorAssembler, StringIndexer}
 import org.apache.spark.ml.tuning.{CrossValidator, ParamGridBuilder}
@@ -64,7 +64,7 @@ object Titanic {
       .setInputCols(Array(allIdxdFeatColNames: _*))
       .setOutputCol(featColName)
 
-    val randomForest = new RandomForestClassifier()
+    val gbt = new RandomForestClassifier()
       .setLabelCol(idxdLabelColName)
       .setFeaturesCol(featColName)
 
@@ -75,13 +75,13 @@ object Titanic {
 
     // define the order of the operations to be performed
     val pipeline = new Pipeline().setStages(
-      (stringIndexers :+ labelIndexer :+ assembler :+ randomForest :+ labelConverter).toArray)
+      (stringIndexers :+ labelIndexer :+ assembler :+ gbt :+ labelConverter).toArray)
 
     // grid of values to perform cross validation on
     val paramGrid = new ParamGridBuilder()
-      .addGrid(randomForest.maxBins, Array(25, 28, 31))
-      .addGrid(randomForest.maxDepth, Array(4, 6, 8))
-      .addGrid(randomForest.impurity, Array("entropy", "gini"))
+      .addGrid(gbt.maxBins, Array(25, 28, 31))
+      .addGrid(gbt.maxDepth, Array(4, 6, 8))
+      .addGrid(gbt.impurity, Array("entropy", "gini"))
       .build()
 
     val evaluator = new BinaryClassificationEvaluator()
