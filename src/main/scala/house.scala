@@ -23,23 +23,78 @@ object House {
 
     val (train, test) = loadData("D://Do/train.csv", "D://Do/test.csv", spark)
 
-    val featureIndexer = new VectorAssembler()
-      .setInputCols(test.schema.fieldNames)
-      .setOutputCol("Feature")
+    val numericFeatColNames = Seq( "LotArea", "YearBuilt", "YearRemodAdd",
+      "BsmtFinSF1","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea",
+    "BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr","KitchenAbvGr","TotRmsAbvGrd","Fireplaces","GarageCars",
+    "GarageArea","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","MiscVal","LotFrontage",
+      "MasVnrArea","GarageYrBlt","TotalSF")
+
+    val categoricalFeatColNames = Seq("MSSubClass", "MSZoning", "Street", "Alley","LotShape","LandContour","LotConfig",
+    "LandSlope","Neighborhood","Condition1","Condition2","BldgType","HouseStyle","OverallQual","OverallCond","RoofStyle","RoofMatl",
+    "Exterior1st","Exterior2nd","MasVnrType", "ExterQual","ExterCond","Foundation","BsmtQual","BsmtCond","BsmtExposure","BsmtFinType1",
+    "BsmtFinType2","Heating","HeatingQC","CentralAir","Electrical","KitchenQual","Functional","FireplaceQu","GarageType","GarageFinish",
+    "GarageQual","GarageCond","PavedDrive","PoolQC","Fence","MiscFeature","SaleType","SaleCondition","MoSold","YrSold")
+
+
+    val idxdCategoricalFeatColName = categoricalFeatColNames.map(_ + "Indexed")
+    val allIdxdFeatColNames = numericFeatColNames ++ idxdCategoricalFeatColName
+    val allFeatColNames = numericFeatColNames ++ categoricalFeatColNames
+    val labelColName = "SalePrice"
+    val featColName = "Features"
+    val idColName = "Id"
+
+    val allPredictColNames = allFeatColNames ++ Seq(idColName)
+    val newtest  = test.withColumn("SalePrice",lit("0").cast(DoubleType))
+    val dataDFFiltered = train.select(labelColName, allPredictColNames: _*)
+    val predictDFFiltered = newtest.select(labelColName, allPredictColNames: _*)
+
+    val allData = dataDFFiltered.union(predictDFFiltered)
+    allData.cache()
+
+    val stringIndexers = categoricalFeatColNames.map { colName =>
+      new StringIndexer()
+        .setInputCol(colName)
+        .setOutputCol(colName + "Indexed")
+        .fit(allData)
+    }
+
+    val assembler = new VectorAssembler()
+      .setInputCols(Array(allIdxdFeatColNames: _*))
+      .setOutputCol(featColName)
 
 
     val rf = new RandomForestRegressor()
       .setLabelCol("SalePrice")
-      .setFeaturesCol("Feature")
+      .setFeaturesCol(featColName)
 
-    val pipeline = new Pipeline()
-      .setStages(Array(featureIndexer, rf))
+    val pipeline = new Pipeline().setStages(
+      (stringIndexers :+  assembler :+ rf ).toArray)
 
-    val model = pipeline.fit(train)
 
-    val predictions = model.transform(test)
+    val paramGrid = new ParamGridBuilder()
+      .addGrid(rf.maxBins, Array(25, 28, 31))
+      .addGrid(rf.maxDepth, Array(4, 6, 8))
+      .build()
 
+
+    val evaluator = new RegressionEvaluator()
+      .setLabelCol("SalePrice")
+      .setPredictionCol("prediction")
+      .setMetricName("rmse")
+
+    val cv = new CrossValidator()
+      .setEstimator(pipeline)
+      .setEvaluator(evaluator)
+      .setEstimatorParamMaps(paramGrid)
+      .setNumFolds(10)
+    // train the model
+    predictDFFiltered.show(5)
+    val crossValidatorModel = cv.fit(train)
+
+    val predictions = crossValidatorModel.transform(predictDFFiltered)
+    predictions.show(5)
     predictions
+      .withColumn("SalePrice", col("prediction"))
       .select("Id", "SalePrice")
       .coalesce(1)
       .write
@@ -49,92 +104,6 @@ object House {
       .save("result")
   }
 
-  def fillNAValues(trainDF: DataFrame, testDF: DataFrame): (DataFrame, DataFrame) = {
-    val avgAge = trainDF.select("Age").union(testDF.select("Age"))
-      .agg(avg("Age"))
-      .collect() match {
-      case Array(Row(avg: Double)) => avg
-      case _ => 0
-    }
-
-    // fill empty values for the fare column
-    val avgFare = trainDF.select("Fare").union(testDF.select("Fare"))
-      .agg(avg("Fare"))
-      .collect() match {
-      case Array(Row(avg: Double)) => avg
-      case _ => 0
-    }
-
-    // map to fill na values
-    val fillNAMap = Map(
-      "Fare"     -> avgFare,
-      "Age"      -> avgAge,
-      "Embarked" -> "S"
-    )
-
-    // udf to fill empty embarked string with S corresponding to Southampton
-    val embarked: (String => String) = {
-      case "" => "S"
-      case a  => a
-    }
-    val embarkedUDF = udf(embarked)
-
-    val newTrainDF = trainDF
-      .na.fill(fillNAMap)
-      .withColumn("Embarked", embarkedUDF(col("Embarked")))
-
-    val newTestDF = testDF
-      .na.fill(fillNAMap)
-      .withColumn("Embarked", embarkedUDF(col("Embarked")))
-
-    (newTrainDF, newTestDF)
-  }
-
-  def createExtraFeatures(trainDF: DataFrame, testDF: DataFrame): (DataFrame, DataFrame) = {
-    // udf to create a FamilySize column as the sum of the SibSp and Parch columns + 1
-    val familySize: ((Int, Int) => Int) = (sibSp: Int, parCh: Int) => sibSp + parCh + 1
-    val familySizeUDF = udf(familySize)
-
-    // udf to create a Title column extracting the title from the Name column
-    val Pattern = ".*, (.*?)\\..*".r
-    val titles = Map(
-      "Mrs"    -> "Mrs",
-      "Lady"   -> "Mrs",
-      "Mme"    -> "Mrs",
-      "Ms"     -> "Ms",
-      "Miss"   -> "Miss",
-      "Mlle"   -> "Miss",
-      "Master" -> "Master",
-      "Rev"    -> "Rev",
-      "Don"    -> "Mr",
-      "Sir"    -> "Sir",
-      "Dr"     -> "Dr",
-      "Col"    -> "Col",
-      "Capt"   -> "Col",
-      "Major"  -> "Col"
-    )
-    val title: ((String, String) => String) = {
-      case (Pattern(t), sex) => titles.get(t) match {
-        case Some(tt) => tt
-        case None     =>
-          if (sex == "male") "Mr"
-          else "Mrs"
-      }
-      case _ => "Mr"
-    }
-    val titleUDF = udf(title)
-
-    val newTrainDF = trainDF
-      .withColumn("FamilySize", familySizeUDF(col("SibSp"), col("Parch")))
-      .withColumn("Title", titleUDF(col("Name"), col("Sex")))
-      .withColumn("SurvivedString", trainDF("Survived").cast(StringType))
-    val newTestDF = testDF
-      .withColumn("FamilySize", familySizeUDF(col("SibSp"), col("Parch")))
-      .withColumn("Title", titleUDF(col("Name"), col("Sex")))
-      .withColumn("SurvivedString", lit("0").cast(StringType))
-
-    (newTrainDF, newTestDF)
-  }
 
   def loadData(
                 trainFile: String,

@@ -27,9 +27,12 @@ object Test {
     val featureIndexer = new VectorAssembler()
       .setInputCols(test.schema.fieldNames)
       .setOutputCol("Feature")
-    train.printSchema()
     val numericFeatColNames = Seq("Age", "SibSp", "Parch", "Fare", "FamilySize")
-    train.columns.foreach(x => println(x))
+    val f = test.columns.tail
+    train.schema.fields.update(1,null)
+    f.foreach(x => println(x))
+    train.na.fill(0)
+    train.printSchema()
 
 
 //    val rf = new RandomForestRegressor()

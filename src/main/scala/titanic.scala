@@ -96,7 +96,7 @@ object Titanic {
     val crossValidatorModel = cv.fit(dataDFFiltered)
     // make predictions
     val predictions = crossValidatorModel.transform(predictDFFiltered)
-
+    predictions.show(10)
     predictions
       .withColumn("Survived", col("predictedLabel"))
       .select("PassengerId", "Survived")
